@@ -1,7 +1,8 @@
-import React from "react";
-import Modal from "./Modal";
 import { PlayerChoice, useGameStore } from "@/libs/stores/useGameStore";
+import React from "react";
 import MatchResult from "./MatchResult";
+import Modal from "./Modal";
+import MatchHistories from "./MatchHistories";
 
 interface Props {
   setBoard: (board: PlayerChoice[]) => void;
@@ -34,7 +35,7 @@ const MatchResultModal = (props: Props) => {
     <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
       <MatchResult winner={winner} />
       <div className="flex items-center justify-center flex-col">
-        <button className="text-green-500 underline">Show History</button>
+        <MatchHistories />
         <div className="flex flex-row gap-2 items-center justify-center">
           <button
             className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"

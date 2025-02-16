@@ -20,12 +20,11 @@ const winningCombinations = [
 
 const GameBoard = () => {
   const playerTurn = useGameStore((state) => state.playerTurn);
-  const playerChoice = useGameStore((state) => state.playerChoice);
   const winner = useGameStore((state) => state.winner);
   const elapsedTime = useGameStore((state) => state.elapsedTime);
   const setPlayerTurn = useGameStore((state) => state.setPlayerTurn);
   const setWinner = useGameStore((state) => state.setWinner);
-  const setMatchHistory = useGameStore((state) => state.setMatchHistory);
+  const setMatchHistories = useGameStore((state) => state.setMatchHistories);
 
   const [board, setBoard] = React.useState<PlayerChoice[]>(Array(9).fill(null));
 
@@ -60,11 +59,10 @@ const GameBoard = () => {
       setWinner("NONE");
     }
 
-    setMatchHistory({
+    setMatchHistories({
       currentTime: new Date().toLocaleString(),
       time: elapsedTime,
       winner: gameWinner ? gameWinner : "NONE",
-      playerChoice: playerChoice,
       board: board,
     });
   };

@@ -8,40 +8,35 @@ export type MatchHistory = {
   winner: "X" | "O" | "NONE";
   time: number;
   currentTime: string;
-  playerChoice: PlayerChoice;
   board: PlayerChoice[];
 };
 
 interface GameState {
-  playerChoice: PlayerChoice;
   gameSection: GameSection;
   playerTurn: PlayerTurn;
   winner: Winner;
-  matchHistory: MatchHistory[];
+  matchHistories: MatchHistory[];
   elapsedTime: number;
-  setPlayerChoice: (choice: PlayerChoice) => void;
   setGameSection: (section: GameSection) => void;
   setPlayerTurn: (turn: PlayerTurn) => void;
   setWinner: (winner: Winner) => void;
   resetMatch: () => void;
   changeSettings: () => void;
-  setMatchHistory: (value: MatchHistory) => void;
+  setMatchHistories: (value: MatchHistory) => void;
   setElapsedTime: (value: number) => void;
 }
 
 export const useGameStore = create<GameState>((set) => ({
-  playerChoice: null,
   gameSection: "playerSelection",
   playerTurn: "X",
   winner: null,
-  matchHistory: [],
+  matchHistories: [],
   elapsedTime: 0,
-  setPlayerChoice: (choice) => set({ playerChoice: choice }),
   setGameSection: (section) => set({ gameSection: section }),
   setPlayerTurn: (turn) => set({ playerTurn: turn }),
   setWinner: (winner) => set({ winner }),
-  setMatchHistory: (value) =>
-    set((state) => ({ matchHistory: [...state.matchHistory, value] })),
+  setMatchHistories: (value) =>
+    set((state) => ({ matchHistories: [...state.matchHistories, value] })),
   setElapsedTime: (time) => set({ elapsedTime: time }),
   resetMatch: () =>
     set({
@@ -51,7 +46,6 @@ export const useGameStore = create<GameState>((set) => ({
   changeSettings: () =>
     set({
       winner: null,
-      playerTurn: "X",
       gameSection: "playerSelection",
     }),
 }));

@@ -8,6 +8,7 @@ const Timer = () => {
   React.useEffect(() => {
     if (winner) {
       setElapsedTime(seconds);
+      setSeconds(0);
       return;
     }
     const interval = setInterval(() => {

@@ -6,8 +6,8 @@ import { motion } from "framer-motion";
 import { useGameStore } from "@/libs/stores/useGameStore";
 
 const PlayerSection = () => {
-  const playerChoice = useGameStore((state) => state.playerChoice);
-  const setPlayerChoice = useGameStore((state) => state.setPlayerChoice);
+  const playerTurn = useGameStore((state) => state.playerTurn);
+  const setPlayerTurn = useGameStore((state) => state.setPlayerTurn);
   const setGameSection = useGameStore((state) => state.setGameSection);
 
   return (
@@ -21,7 +21,7 @@ const PlayerSection = () => {
         className="size-[21.125rem] -right-[5.25rem] top-0 absolute z-0"
       />
       <p className="font-bold text-[2.625rem] text-white z-10">TIC-TAC-TOE</p>
-      {playerChoice !== null && (
+      {playerTurn !== null && (
         <div className="start-now" onClick={() => setGameSection("playing")}>
           Start Now
         </div>
@@ -33,21 +33,21 @@ const PlayerSection = () => {
         <div className="flex flex-row gap-[1.5625rem] mt-4 w-full px-8">
           <motion.div
             className={`player-button ${
-              playerChoice === "X" ? "border-4 border-red-500" : ""
+              playerTurn === "X" ? "border-4 border-red-500" : ""
             }`}
-            animate={playerChoice === "X" ? { scale: 1.2 } : {}}
+            animate={playerTurn === "X" ? { scale: 1.2 } : {}}
             transition={{ type: "spring", stiffness: 300 }}
-            onClick={() => setPlayerChoice("X")}
+            onClick={() => setPlayerTurn("X")}
           >
             <Icon name="X" className="size-full" />
           </motion.div>
           <motion.div
             className={`player-button ${
-              playerChoice === "O" ? "border-4 border-red-500" : ""
+              playerTurn === "O" ? "border-4 border-red-500" : ""
             }`}
-            animate={playerChoice === "O" ? { scale: 1.2 } : {}}
+            animate={playerTurn === "O" ? { scale: 1.2 } : {}}
             transition={{ type: "spring", stiffness: 300 }}
-            onClick={() => setPlayerChoice("O")}
+            onClick={() => setPlayerTurn("O")}
           >
             <Icon name="O" className="size-full" />
           </motion.div>
