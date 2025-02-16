@@ -19,8 +19,8 @@ const Page = () => {
   }, [gameSection]);
 
   return (
-    <div className="w-screen h-screen flex items-center justify-center">
-      <div className="bg-primary w-[23.5rem] h-[41.75rem]">
+    <div className="w-screen h-screen flex items-center justify-center bg-blue-200">
+      <div className="bg-primary w-[23.5rem] h-[41.75rem] rounded-lg">
         {renderGameSection()}
       </div>
     </div>
